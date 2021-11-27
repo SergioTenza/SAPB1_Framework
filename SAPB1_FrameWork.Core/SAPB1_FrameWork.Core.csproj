@@ -12,9 +12,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Exceptions\" />
-    <Folder Include="Services\Connection\" />
-  </ItemGroup>
-
 </Project>

@@ -18,4 +18,10 @@
     <ProjectReference Include="..\SAPB1_FrameWork.Core\SAPB1_FrameWork.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="SAPBusinessOneSDK">
+      <HintPath>..\..\..\..\Desktop\Garvalin\SAP\SAP Business One SDK\Lib\SAPBusinessOneSDK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
