@@ -11,7 +11,17 @@ namespace SAPB1_FrameWork.Core.Brokers.ConnectionBroker
     {
         public Application SelectApplication(string connectionString)
         {
-            throw new NotImplementedException();
+            SAPbouiCOM.Application SBO_Application = null;
+            SAPbouiCOM.SboGuiApi SboGuiApi = null;
+            string sConnectionString = null;
+
+            SboGuiApi = new SAPbouiCOM.SboGuiApi();
+            sConnectionString = connectionString;
+            SboGuiApi.Connect(sConnectionString);
+
+            SBO_Application = SboGuiApi.GetApplication(-1);
+
+            return SBO_Application;
         }
     }
 }
