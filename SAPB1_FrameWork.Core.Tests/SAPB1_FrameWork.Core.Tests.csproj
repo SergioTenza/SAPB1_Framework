@@ -14,4 +14,8 @@
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SAPB1_FrameWork.Core\SAPB1_FrameWork.Core.csproj" />
+  </ItemGroup>
+
 </Project>

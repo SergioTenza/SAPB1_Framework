@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Brokers\Logging\" />
     <Folder Include="Models\Exceptions\" />
     <Folder Include="Services\Connection\" />
   </ItemGroup>
