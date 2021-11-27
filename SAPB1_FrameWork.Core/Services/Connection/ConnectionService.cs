@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SAPB1_FrameWork.Core.Services.Connection
 {
-    public class ConnectionService : IConnectionService
+    public partial class ConnectionService : IConnectionService
     {
         private readonly ILogger logger;
         private readonly IConnectionBroker connectionBroker;
@@ -19,9 +19,10 @@ namespace SAPB1_FrameWork.Core.Services.Connection
             this.logger = logger;
             this.connectionBroker = connectionBroker;
         }
-        public Application RetrieveApplication(string connection)
+        public Application RetrieveApplication(string connection) =>
+        TryCatch(() =>
         {
-            throw new NotImplementedException();
-        }
+            return this.connectionBroker.SelectApplication(connection);
+        });
     }
 }
