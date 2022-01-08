@@ -42,7 +42,7 @@ namespace SAPB1_FrameWork.Core.Tests
         {
             //Given
             string connectionString = data;
-            SAPbouiCOM.Application app = null;
+            SAPbouiCOM.Application app;
             //That
             //Then
             Assert.Throws<ConnectionServiceInterOpComException>(() => app = connectionService.RetrieveApplication(connectionString));
@@ -56,6 +56,16 @@ namespace SAPB1_FrameWork.Core.Tests
             //That
             //Then
             Assert.Throws<ConnectionServiceInvalidApplicationException>(() => app = connectionService.GetCurrentApplication());
+        }
+
+        [Test]
+        public void CoreServicesConnectionServiceRetrieveCompanyMustThrowConnectionServiceInvalidApplicationOnServiceNullApplication()
+        {
+            //Given
+            SAPbobsCOM.Company company;
+            //That
+            //Then
+            Assert.Throws<ConnectionServiceInvalidApplicationException>(() => company = connectionService.GetCurrentCompany());
         }
     }
 }
