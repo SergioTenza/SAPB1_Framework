@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SAPB1_FrameWork.Core.Models.Exceptions
 {
-    public class ConnectionServiceInvalidApplicationException:Exception
+    public class ConnectionServiceInvalidApplicationException : Exception
     {
         public ConnectionServiceInvalidApplicationException()
             :base("The SAP Application is null. Please use Retrieve Application Method First.")

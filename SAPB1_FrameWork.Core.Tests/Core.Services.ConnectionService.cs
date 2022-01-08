@@ -3,7 +3,6 @@ using SAPB1_FrameWork.Core.Brokers.ConnectionBroker;
 using SAPB1_FrameWork.Core.Brokers.Logging;
 using SAPB1_FrameWork.Core.Models.Exceptions;
 using SAPB1_FrameWork.Core.Services.Connection;
-using Xunit;
 
 namespace SAPB1_FrameWork.Core.Tests
 {
@@ -18,11 +17,11 @@ namespace SAPB1_FrameWork.Core.Tests
         {
             logger = new Logger();
             connectionBroker = new ConnectionBroker();
-            connectionService = new ConnectionService(logger,connectionBroker);
+            connectionService = new ConnectionService(logger, connectionBroker);
             //0030002C0030002C00530041005000420044005F00440061007400650076002C0050004C006F006D0056004900490056
         }
 
-        
+
         [TestCase("")]
         [TestCase(" ")]
         [TestCase("00000000000000000000")]
@@ -47,6 +46,16 @@ namespace SAPB1_FrameWork.Core.Tests
             //That
             //Then
             Assert.Throws<ConnectionServiceInterOpComException>(() => app = connectionService.RetrieveApplication(connectionString));
+        }
+
+        [Test]
+        public void CoreServicesConnectionServiceRetrieveApplicationMustThrowConnectionServiceInvalidApplicationOnServiceNullApplication()
+        {
+            //Given
+            SAPbouiCOM.Application app;
+            //That
+            //Then
+            Assert.Throws<ConnectionServiceInvalidApplicationException>(() => app = connectionService.GetCurrentApplication());
         }
     }
 }

@@ -40,6 +40,11 @@ namespace SAPB1_FrameWork.Core.Services.Connection
 
         public Application GetCurrentApplication()
         {
-            application ??= 
+            if (this.application is null)
+            {
+                throw new ConnectionServiceInvalidApplicationException();
+            }
+            return this.application;
+        }
     }
 }
