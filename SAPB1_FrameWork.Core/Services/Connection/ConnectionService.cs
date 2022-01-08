@@ -22,7 +22,7 @@ namespace SAPB1_FrameWork.Core.Services.Connection
         public Application RetrieveApplication(string connection) =>
         TryCatch(() =>
         {
-            //ValidateConnectionString(connection);
+            ValidateConnectionString(connection);
             return this.connectionBroker.GetApplication(connection);
         });
     }
