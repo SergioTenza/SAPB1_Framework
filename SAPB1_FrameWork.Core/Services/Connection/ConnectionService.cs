@@ -1,5 +1,6 @@
 ﻿using SAPB1_FrameWork.Core.Brokers.ConnectionBroker;
 using SAPB1_FrameWork.Core.Brokers.Logging;
+using SAPB1_FrameWork.Core.Models.Exceptions;
 using SAPbouiCOM;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace SAPB1_FrameWork.Core.Services.Connection
     {
         private readonly ILogger logger;
         private readonly IConnectionBroker connectionBroker;
+        private SAPbouiCOM.Application? application { get; set; }
 
         public ConnectionService(ILogger logger, IConnectionBroker connectionBroker)
         {
@@ -23,7 +25,21 @@ namespace SAPB1_FrameWork.Core.Services.Connection
         TryCatch(() =>
         {
             ValidateConnectionString(connection);
-            return this.connectionBroker.GetApplication(connection);
+            application ??= this.connectionBroker.GetApplication(connection);            
+            return this.application;
         });
+
+        public SAPbobsCOM.Company GetCurrentCompany()
+        {
+            if (this.application is null)
+            {
+                throw new ConnectionServiceInvalidApplicationException();
+            }
+            return (SAPbobsCOM.Company)this.application.Company.GetDICompany();
+        }
+
+        public Application GetCurrentApplication()
+        {
+            application ??= 
     }
 }

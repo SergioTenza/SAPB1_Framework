@@ -20,5 +20,7 @@ namespace SAPB1_FrameWork.Core.Brokers.ConnectionBroker
 
             return SBO_Application;
         }
+
+        public SAPbobsCOM.Company GetCompany(Application application) => (SAPbobsCOM.Company)application.Company.GetDICompany();
     }
 }

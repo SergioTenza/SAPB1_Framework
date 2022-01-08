@@ -9,7 +9,7 @@ namespace SAPB1_FrameWork.Core.Models.Exceptions
     public class ConnectionServiceValidationException : Exception
     {
         public ConnectionServiceValidationException()
-                : base("Ha ocurrido un problema al crear la conexion con SAP Business One")
+                : base("There was a problem trying to connect to SAP Business One CLient.")
         { }
     }
 }

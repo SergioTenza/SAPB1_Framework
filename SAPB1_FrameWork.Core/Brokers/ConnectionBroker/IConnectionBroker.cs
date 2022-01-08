@@ -9,5 +9,6 @@ namespace SAPB1_FrameWork.Core.Brokers.ConnectionBroker
     public interface IConnectionBroker
     {
         SAPbouiCOM.Application GetApplication(string connectionString);
+        SAPbobsCOM.Company GetCompany(SAPbouiCOM.Application application);
     }
 }

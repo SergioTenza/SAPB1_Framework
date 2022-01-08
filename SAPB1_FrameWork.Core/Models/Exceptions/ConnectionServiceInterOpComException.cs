@@ -9,7 +9,7 @@ namespace SAPB1_FrameWork.Core.Models.Exceptions
     public class ConnectionServiceInterOpComException : Exception
     {
         public ConnectionServiceInterOpComException(System.Runtime.InteropServices.COMException innerException)
-            : base("Error de operacion COM. Compruebe que el cliente de SAP se esta ejecutando.")
+            : base("COM Operation error. Check the SAP Business One CLient is working and try again.")
         { }
     }
 }
