@@ -30,7 +30,7 @@ namespace SAPB1_FrameWork.Core.Tests
         {
             //Given
             string connectionString = data;
-            SAPbouiCOM.Application app = null;
+            SAPbouiCOM.Application app;
             //That
             //Then
             Assert.Throws<ConnectionServiceValidationException>(() => app = connectionService.RetrieveApplication(connectionString));
