@@ -7,7 +7,7 @@ using Xunit;
 
 namespace SAPB1_FrameWork.Core.Tests
 {
-    public class Service_Connection_Tests
+    public class ConnectionServiceTests
     {
         private Logger logger;
         private ConnectionBroker connectionBroker;
@@ -19,6 +19,7 @@ namespace SAPB1_FrameWork.Core.Tests
             logger = new Logger();
             connectionBroker = new ConnectionBroker();
             connectionService = new ConnectionService(logger,connectionBroker);
+            //0030002C0030002C00530041005000420044005F00440061007400650076002C0050004C006F006D0056004900490056
         }
 
         
@@ -26,7 +27,19 @@ namespace SAPB1_FrameWork.Core.Tests
         [TestCase(" ")]
         [TestCase("00000000000000000000")]
         [Test]
-        public void CoreServicesConnectionRetrieveApplicationMustThrowExceptionConnectionServiceValidationException(string data)
+        public void CoreServicesConnectionServiceRetrieveApplicationMustThrowExceptionConnectionServiceValidationException(string data)
+        {
+            //Given
+            string connectionString = data;
+            SAPbouiCOM.Application app = null;
+            //That
+            //Then
+            Assert.Throws<ConnectionServiceValidationException>(() => app = connectionService.RetrieveApplication(connectionString));
+        }
+
+        [TestCase("0030002C0030002C00530041005000420044005F00440061007400650076002C0050004C006F006D0056004900490056")]
+        [Test]
+        public void CoreServicesConnectionServiceRetrieveApplicationMustThrowConnectionServiceInterOpComExceptionOnNoSAPCLientRunning(string data)
         {
             //Given
             string connectionString = data;
