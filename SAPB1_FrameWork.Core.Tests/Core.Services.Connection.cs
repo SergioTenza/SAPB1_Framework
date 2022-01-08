@@ -1,7 +1,9 @@
 using NUnit.Framework;
 using SAPB1_FrameWork.Core.Brokers.ConnectionBroker;
 using SAPB1_FrameWork.Core.Brokers.Logging;
+using SAPB1_FrameWork.Core.Models.Exceptions;
 using SAPB1_FrameWork.Core.Services.Connection;
+using Xunit;
 
 namespace SAPB1_FrameWork.Core.Tests
 {
@@ -19,15 +21,19 @@ namespace SAPB1_FrameWork.Core.Tests
             connectionService = new ConnectionService(logger,connectionBroker);
         }
 
+        
+        [TestCase("")]
+        [TestCase(" ")]
+        [TestCase("00000000000000000000")]
         [Test]
-        public void CoreServicesConnectionRetrieveApplicationMustNotThrowException()
+        public void CoreServicesConnectionRetrieveApplicationMustThrowExceptionConnectionServiceValidationException(string data)
         {
             //Given
-            string connectionString = "00000000000000000000";
+            string connectionString = data;
             SAPbouiCOM.Application app = null;
             //That
             //Then
-            Assert.DoesNotThrow(() => app = connectionService.RetrieveApplication(connectionString));
+            Assert.Throws<ConnectionServiceValidationException>(() => app = connectionService.RetrieveApplication(connectionString));
         }
     }
 }
