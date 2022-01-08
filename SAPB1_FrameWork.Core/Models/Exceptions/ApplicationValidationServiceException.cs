@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SAPB1_FrameWork.Core.Models.Exceptions
 {
-    public class ApplicationValidationService : Exception
+    public class ApplicationValidationServiceException : Exception
     {
-        public ApplicationValidationService(Exception innerException)
+        public ApplicationValidationServiceException(Exception innerException)
             : base("Error de validacion de la cadena de conexion con SAP Business One",innerException)
         { }
     }

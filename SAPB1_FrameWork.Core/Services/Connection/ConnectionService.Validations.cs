@@ -26,7 +26,7 @@ namespace SAPB1_FrameWork.Core.Services.Connection
 
 		private void Validate(params (dynamic Rule, string Parameter)[] validations)
 		{
-			var connectionServiceException = new ConnectionServiceException();
+			var connectionServiceException = new ConnectionServiceValidationException();
 
 			foreach ((dynamic rule, string parameter) in validations)
 			{

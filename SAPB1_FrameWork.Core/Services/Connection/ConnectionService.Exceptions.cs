@@ -16,7 +16,7 @@ namespace SAPB1_FrameWork.Core.Services.Connection
 			{
 				return returningApplicationFunction();
 			}
-			catch (ApplicationValidationService applicationValidationException)
+			catch (ApplicationValidationServiceException applicationValidationException)
 			{
 				throw CreateAndLogValidationException(applicationValidationException);
 			}
@@ -26,9 +26,9 @@ namespace SAPB1_FrameWork.Core.Services.Connection
 			}
 		}
 
-		private ApplicationValidationService CreateAndLogValidationException(Exception exception)
+		private ApplicationValidationServiceException CreateAndLogValidationException(Exception exception)
 		{
-			var applicationValidationException = new ApplicationValidationService(exception);
+			var applicationValidationException = new ApplicationValidationServiceException(exception);
 			this.logger.Log(applicationValidationException.Message);
 
 			return applicationValidationException;

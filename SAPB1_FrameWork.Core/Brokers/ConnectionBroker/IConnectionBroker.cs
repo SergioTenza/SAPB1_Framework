@@ -8,6 +8,6 @@ namespace SAPB1_FrameWork.Core.Brokers.ConnectionBroker
 {
     public interface IConnectionBroker
     {
-        SAPbouiCOM.Application SelectApplication(string connectionString);
+        SAPbouiCOM.Application GetApplication(string connectionString);
     }
 }

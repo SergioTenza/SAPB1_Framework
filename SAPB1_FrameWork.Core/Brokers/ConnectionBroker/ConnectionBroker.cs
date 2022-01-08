@@ -9,7 +9,7 @@ namespace SAPB1_FrameWork.Core.Brokers.ConnectionBroker
 {
     public class ConnectionBroker : IConnectionBroker
     {
-        public Application SelectApplication(string connectionString)
+        public Application GetApplication(string connectionString)
         {
             SAPbouiCOM.Application SBO_Application = null;
             SAPbouiCOM.SboGuiApi SboGuiApi = null;
