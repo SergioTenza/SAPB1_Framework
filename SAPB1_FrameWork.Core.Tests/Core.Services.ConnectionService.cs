@@ -46,7 +46,7 @@ namespace SAPB1_FrameWork.Core.Tests
             SAPbouiCOM.Application app = null;
             //That
             //Then
-            Assert.Throws<ConnectionServiceValidationException>(() => app = connectionService.RetrieveApplication(connectionString));
+            Assert.Throws<ConnectionServiceInterOpComException>(() => app = connectionService.RetrieveApplication(connectionString));
         }
     }
 }
