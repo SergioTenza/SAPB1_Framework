@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// -------------------------------------------------------
+// Copyright (c) Coalition of the Good-Hearted Engineers
+// FREE TO USE FOR THE WORLD
+// -------------------------------------------------------
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SAPB1_FrameWork.Core.Brokers.Logging
+namespace SAPB1_FrameWork.Core.Brokers.LoggingBroker
 {
     public class Logger : ILogger
     {

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿// -------------------------------------------------------
+// Copyright (c) Coalition of the Good-Hearted Engineers
+// FREE TO USE FOR THE WORLD
+// -------------------------------------------------------
 namespace SAPB1_FrameWork.Core.Services.Connection
 {
     public interface IConnectionService
     {
         
-        SAPbouiCOM.Application RetrieveApplication(string connection);
+        SAPbouiCOM.Application Connect(string connection);
         SAPbouiCOM.Application GetCurrentApplication();
         SAPbobsCOM.Company GetCurrentCompany();
     }

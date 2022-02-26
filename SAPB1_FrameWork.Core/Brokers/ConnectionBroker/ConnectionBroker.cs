@@ -1,26 +1,19 @@
-﻿using SAPbouiCOM;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿// -------------------------------------------------------
+// Copyright (c) Coalition of the Good-Hearted Engineers
+// FREE TO USE FOR THE WORLD
+// -------------------------------------------------------
 namespace SAPB1_FrameWork.Core.Brokers.ConnectionBroker
 {
     public class ConnectionBroker : IConnectionBroker
     {
-        public Application GetApplication(string connectionString)
+        public SAPbouiCOM.Application GetApplication(string connectionString)
         {
-            SAPbouiCOM.Application? SBO_Application = null;
-            SAPbouiCOM.SboGuiApi? SboGuiApi = null;
-
+            SAPbouiCOM.Application? SBO_Application;
+            SAPbouiCOM.SboGuiApi? SboGuiApi;
             SboGuiApi = new SAPbouiCOM.SboGuiApi();
             SboGuiApi.Connect(connectionString);
             SBO_Application = SboGuiApi.GetApplication(-1);
-
             return SBO_Application;
         }
-
-        public SAPbobsCOM.Company GetCompany(Application application) => (SAPbobsCOM.Company)application.Company.GetDICompany();
     }
 }

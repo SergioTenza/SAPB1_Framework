@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿// -------------------------------------------------------
+// Copyright (c) Coalition of the Good-Hearted Engineers
+// FREE TO USE FOR THE WORLD
+// -------------------------------------------------------
 namespace SAPB1_FrameWork.Core.Brokers.ConnectionBroker
 {
     public interface IConnectionBroker
     {
         SAPbouiCOM.Application GetApplication(string connectionString);
-        SAPbobsCOM.Company GetCompany(SAPbouiCOM.Application application);
     }
 }

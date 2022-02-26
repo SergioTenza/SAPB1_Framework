@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SAPB1_FrameWork.Core.Brokers.Logging
+﻿// -------------------------------------------------------
+// Copyright (c) Coalition of the Good-Hearted Engineers
+// FREE TO USE FOR THE WORLD
+// -------------------------------------------------------
+namespace SAPB1_FrameWork.Core.Brokers.LoggingBroker
 {
     public interface ILogger
     {

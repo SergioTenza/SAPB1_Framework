@@ -1,45 +1,46 @@
-﻿using SAPB1_FrameWork.Core.Models.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// -------------------------------------------------------
+// Copyright (c) Coalition of the Good-Hearted Engineers
+// FREE TO USE FOR THE WORLD
+// -------------------------------------------------------
+using SAPB1_FrameWork.Core.Models.Exceptions.ConnectionService;
 
 namespace SAPB1_FrameWork.Core.Services.Connection
 {
     public partial class ConnectionService
     {
-		private delegate SAPbouiCOM.Application ReturningApplicationFunction();
-		private SAPbouiCOM.Application TryCatch(ReturningApplicationFunction returningApplicationFunction)
-		{
-			try
-			{
-				return returningApplicationFunction();
-			}
-			catch (ApplicationValidationServiceException applicationValidationException)
-			{
-				throw CreateAndLogValidationException(applicationValidationException);
-			}
-			catch (System.Runtime.InteropServices.COMException systemInterOpException)
+        private delegate SAPbouiCOM.Application ReturningApplicationFunction();
+        private SAPbouiCOM.Application TryCatch(ReturningApplicationFunction returningApplicationFunction)
+        {
+            try
             {
-				throw CreateAndLogComException(systemInterOpException);
-			}
-		}
-
-		private ApplicationValidationServiceException CreateAndLogValidationException(Exception exception)
-		{
-			var applicationValidationException = new ApplicationValidationServiceException(exception);
-			this.logger.Log(applicationValidationException.Message);
-
-			return applicationValidationException;
-		}
-
-		private ConnectionServiceInterOpComException CreateAndLogComException(System.Runtime.InteropServices.COMException exception)
-		{
-			var connectionServiceInterOpComException = new ConnectionServiceInterOpComException(exception);
-			this.logger.Log(connectionServiceInterOpComException.Message);
-
-			return connectionServiceInterOpComException;
-		}
-	}
+                return returningApplicationFunction();
+            }
+            catch (ConnectionStringValidationException applicationValidationException)
+            {
+                throw CreateAndLogValidationException(applicationValidationException);
+            }
+            catch (System.Runtime.InteropServices.COMException systemInterOpException)
+            {
+                throw CreateAndLogException(systemInterOpException);
+            }
+            catch (InvalidApplicationException invalidApplicationException)
+            {
+                throw CreateAndLogException(invalidApplicationException);
+            }
+            catch (Exception exception)
+            {
+                throw CreateAndLogException(exception);
+            }
+        }
+        private ConnectionServiceException CreateAndLogValidationException(Exception exception)
+        {
+            var applicationValidationException = new ConnectionServiceException(exception);
+            return applicationValidationException;
+        }
+        private ConnectionServiceException CreateAndLogException(Exception exception)
+        {
+            var applicationValidationException = new ConnectionServiceException(exception);
+            return applicationValidationException;
+        }
+    }
 }
