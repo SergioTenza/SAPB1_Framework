@@ -1,4 +1,4 @@
-# SAPB1_Framework
+# SAP Business One Fluent Framework
 Fluent FrameWork to simplify and easy the use of SAP Business One.    
      
 DISCLAIMER:
